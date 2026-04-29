@@ -112,10 +112,23 @@ export function Footer({
             )}
           </div>
 
-          {/* Property nav columns + contact, packed into the right 7 cols */}
+          {/* Property nav columns + contact, packed into the right 7 cols.
+             Grid columns adapt to content count — 1 contact only gets 1 col,
+             not stranded in a 4-col grid. */}
           {(navColumns?.length || contact) && (
             <div className="md:col-span-7">
-              <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 md:grid-cols-4">
+              <div
+                className={cn(
+                  "grid gap-x-6 gap-y-10",
+                  rightItemCount(navColumns, contact) === 1 && "grid-cols-1",
+                  rightItemCount(navColumns, contact) === 2 &&
+                    "grid-cols-1 sm:grid-cols-2",
+                  rightItemCount(navColumns, contact) === 3 &&
+                    "grid-cols-2 sm:grid-cols-3",
+                  rightItemCount(navColumns, contact) >= 4 &&
+                    "grid-cols-2 sm:grid-cols-3 md:grid-cols-4",
+                )}
+              >
                 {navColumns?.map((col, i) => (
                   <NavColumnView key={col.title || `col-${i}`} column={col} />
                 ))}
@@ -155,6 +168,13 @@ export function Footer({
       </div>
     </footer>
   );
+}
+
+function rightItemCount(
+  navColumns: FooterProps["navColumns"],
+  contact: FooterProps["contact"],
+): number {
+  return (navColumns?.length || 0) + (contact ? 1 : 0);
 }
 
 function NavColumnView({ column }: { column: NavColumn }) {

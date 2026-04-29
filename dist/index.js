@@ -58,10 +58,22 @@ function Footer({
             propertyName && /* @__PURE__ */ jsx("p", { className: "mt-3 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-planara-teal)]", children: propertyName }),
             tagline && /* @__PURE__ */ jsx("p", { className: "mt-4 max-w-sm text-sm leading-relaxed text-[var(--text-on-dark-secondary)]", children: tagline })
           ] }),
-          (navColumns?.length || contact) && /* @__PURE__ */ jsx("div", { className: "md:col-span-7", children: /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 md:grid-cols-4", children: [
-            navColumns?.map((col, i) => /* @__PURE__ */ jsx(NavColumnView, { column: col }, col.title || `col-${i}`)),
-            contact && /* @__PURE__ */ jsx(ContactView, { contact })
-          ] }) })
+          (navColumns?.length || contact) && /* @__PURE__ */ jsx("div", { className: "md:col-span-7", children: /* @__PURE__ */ jsxs(
+            "div",
+            {
+              className: cn(
+                "grid gap-x-6 gap-y-10",
+                rightItemCount(navColumns, contact) === 1 && "grid-cols-1",
+                rightItemCount(navColumns, contact) === 2 && "grid-cols-1 sm:grid-cols-2",
+                rightItemCount(navColumns, contact) === 3 && "grid-cols-2 sm:grid-cols-3",
+                rightItemCount(navColumns, contact) >= 4 && "grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
+              ),
+              children: [
+                navColumns?.map((col, i) => /* @__PURE__ */ jsx(NavColumnView, { column: col }, col.title || `col-${i}`)),
+                contact && /* @__PURE__ */ jsx(ContactView, { contact })
+              ]
+            }
+          ) })
         ] }),
         /* @__PURE__ */ jsx(CrossPropertyBlock, {}),
         /* @__PURE__ */ jsxs("div", { className: "mt-12 flex flex-col justify-between gap-3 border-t border-[var(--border-on-dark)] pt-8 text-xs text-[var(--text-on-dark-faint)] sm:flex-row sm:items-center", children: [
@@ -86,6 +98,9 @@ function Footer({
       ] })
     }
   );
+}
+function rightItemCount(navColumns, contact) {
+  return (navColumns?.length || 0) + (contact ? 1 : 0);
 }
 function NavColumnView({ column }) {
   return /* @__PURE__ */ jsxs("div", { children: [
