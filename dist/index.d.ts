@@ -84,6 +84,32 @@ declare const fontFamilies: {
 declare function PlanaraFonts(): react_jsx_runtime.JSX.Element;
 
 /**
+ * Plausible analytics — privacy-friendly, cookie-less.
+ * Each property passes its own `domain` (e.g. "planara.com").
+ *
+ * Usage in a Next.js root layout:
+ *
+ *   import { PlausibleAnalytics } from "@planara/design-system";
+ *
+ *   export default function RootLayout({ children }) {
+ *     return (
+ *       <html>
+ *         <head>
+ *           <PlausibleAnalytics domain="planara.com" />
+ *         </head>
+ *         <body>{children}</body>
+ *       </html>
+ *     );
+ *   }
+ *
+ * Stats land at https://plausible.io/<domain> after the domain is registered
+ * in the Plausible dashboard.
+ */
+declare function PlausibleAnalytics({ domain }: {
+    domain: string;
+}): react_jsx_runtime.JSX.Element;
+
+/**
  * Design tokens for Planara properties.
  *
  * These mirror the CSS custom properties exposed by tokens.css.
@@ -119,4 +145,4 @@ declare const tokens: {
 
 declare function cn(...inputs: ClassValue[]): string;
 
-export { type ContactItem, Footer, type FooterProps, type NavColumn, PlanaraFonts, cn, fontFamilies, tokens };
+export { type ContactItem, Footer, type FooterProps, type NavColumn, PlanaraFonts, PlausibleAnalytics, cn, fontFamilies, tokens };

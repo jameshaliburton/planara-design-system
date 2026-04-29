@@ -183,6 +183,16 @@ function PlanaraFonts() {
     /* @__PURE__ */ jsx("link", { rel: "stylesheet", href: GOOGLE_FONTS_HREF })
   ] });
 }
+function PlausibleAnalytics({ domain }) {
+  return /* @__PURE__ */ jsx(
+    "script",
+    {
+      defer: true,
+      "data-domain": domain,
+      src: "https://plausible.io/js/script.js"
+    }
+  );
+}
 
 // src/tokens.ts
 var tokens = {
@@ -209,6 +219,6 @@ var tokens = {
   }
 };
 
-export { Footer, PlanaraFonts, cn, fontFamilies, tokens };
+export { Footer, PlanaraFonts, PlausibleAnalytics, cn, fontFamilies, tokens };
 //# sourceMappingURL=index.js.map
 //# sourceMappingURL=index.js.map
