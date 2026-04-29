@@ -1,17 +1,16 @@
 /*
- * Planara design tokens — CSS custom properties.
+ * Planara design tokens — canonical Tailwind v4 theme + CSS custom properties.
  *
  * Source of truth for color, typography, radius across all four properties.
- * Do not redeclare these in consumers. Override only by reassigning a
- * specific var in your :root if a property genuinely needs to deviate
- * (and document the deviation).
+ * Consumers do `@import "@planara/design-system/tokens.css"` once and get:
+ *   - Tailwind v4 utility classes (bg-planara-teal, font-sans, etc.)
+ *   - CSS custom properties at :root for direct var() use anywhere
  *
- * Consumed in Tailwind v4 via `@theme inline` mapping or directly via
- * `var(--color-planara-teal)` in classnames.
+ * Override only by reassigning a specific var in your :root if a property
+ * genuinely needs to deviate (and document the deviation).
  */
 
-:root {
-  /* Brand palette — canonical hex values */
+@theme inline {
   --color-planara-dark: #131820;
   --color-planara-navy: #0F1729;
   --color-planara-teal: #43CED6;
@@ -22,24 +21,23 @@
   --color-planara-light: #F8FAFC;
   --color-planara-border: #E2E5EA;
 
-  /* Typography — Switzer / Fraunces / Space Mono via Fontshare + Google Fonts.
-     Load <PlanaraFonts /> in <head> for these to resolve. */
   --font-sans: "Switzer", system-ui, -apple-system, sans-serif;
   --font-serif: "Fraunces", Georgia, serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
 
-  /* Radius scale */
   --radius-sm: 0.25rem;
   --radius: 0.375rem;
   --radius-lg: 0.5rem;
+}
 
-  /* Semantic text on dark backgrounds */
+/* Semantic tokens for dark surfaces — used by the shared Footer.
+   Not in @theme because they're for direct var() use, not Tailwind utilities. */
+:root {
   --text-on-dark-primary: #F8FAFC;
   --text-on-dark-secondary: rgba(255, 255, 255, 0.65);
   --text-on-dark-muted: rgba(255, 255, 255, 0.45);
   --text-on-dark-faint: rgba(255, 255, 255, 0.3);
 
-  /* Borders for dark surfaces */
   --border-on-dark: rgba(255, 255, 255, 0.08);
   --border-on-dark-strong: rgba(255, 255, 255, 0.12);
 }
