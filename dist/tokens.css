@@ -1,0 +1,45 @@
+/*
+ * Planara design tokens — CSS custom properties.
+ *
+ * Source of truth for color, typography, radius across all four properties.
+ * Do not redeclare these in consumers. Override only by reassigning a
+ * specific var in your :root if a property genuinely needs to deviate
+ * (and document the deviation).
+ *
+ * Consumed in Tailwind v4 via `@theme inline` mapping or directly via
+ * `var(--color-planara-teal)` in classnames.
+ */
+
+:root {
+  /* Brand palette — canonical hex values */
+  --color-planara-dark: #131820;
+  --color-planara-navy: #0F1729;
+  --color-planara-teal: #43CED6;
+  --color-planara-teal-dim: #1F8F8F;
+  --color-planara-teal-deep: #0E5A5A;
+  --color-planara-blue: #2E95F5;
+  --color-planara-muted: #627084;
+  --color-planara-light: #F8FAFC;
+  --color-planara-border: #E2E5EA;
+
+  /* Typography — Switzer / Fraunces / Space Mono via Fontshare + Google Fonts.
+     Load <PlanaraFonts /> in <head> for these to resolve. */
+  --font-sans: "Switzer", system-ui, -apple-system, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  /* Radius scale */
+  --radius-sm: 0.25rem;
+  --radius: 0.375rem;
+  --radius-lg: 0.5rem;
+
+  /* Semantic text on dark backgrounds */
+  --text-on-dark-primary: #F8FAFC;
+  --text-on-dark-secondary: rgba(255, 255, 255, 0.65);
+  --text-on-dark-muted: rgba(255, 255, 255, 0.45);
+  --text-on-dark-faint: rgba(255, 255, 255, 0.3);
+
+  /* Borders for dark surfaces */
+  --border-on-dark: rgba(255, 255, 255, 0.08);
+  --border-on-dark-strong: rgba(255, 255, 255, 0.12);
+}

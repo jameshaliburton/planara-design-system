@@ -1,14 +1,10 @@
 {
   "name": "@planara/design-system",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shared design tokens + components for planara.com properties.",
   "type": "module",
   "license": "UNLICENSED",
   "private": false,
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jameshaliburton/planara-design-system.git"
@@ -33,7 +29,8 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepare": "tsup"
   },
   "peerDependencies": {
     "next": ">=15",

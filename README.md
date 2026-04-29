@@ -23,22 +23,25 @@ Buttons, nav, cards, layouts, animation primitives, hero scaffolds. Each propert
 
 ## Install
 
-This is a private package on GitHub Packages. Each consuming project needs:
-
-**1. `.npmrc` at repo root:**
-
-```
-@planara:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${NPM_TOKEN}
-```
-
-**2. `NPM_TOKEN` environment variable** (a GitHub PAT with `read:packages` scope) on every machine that runs `npm install` — local dev, Vercel, CI.
-
-**3. Install:**
+Public GitHub repo, installed directly via git URL. No registry, no auth tokens, no Vercel env vars. Pin to a specific tag for reproducibility.
 
 ```sh
-npm install @planara/design-system
+npm install github:jameshaliburton/planara-design-system#v0.1.1
 ```
+
+In `package.json` it appears as:
+
+```json
+"@planara/design-system": "github:jameshaliburton/planara-design-system#v0.1.1"
+```
+
+The repo's `dist/` folder is committed, so installs are fast and don't require building. The `prepare` script also runs `tsup` automatically when installed from git as a fallback.
+
+### Why git URL (and not GitHub Packages or public npm)?
+
+GitHub Packages publish needs `write:packages` token and Actions billing on the parent repo — added friction. Public npm registry would work too but adds a maintainer-account dependency. Git URL is the cheapest path that ergonomically lands as a normal `package.json` dependency.
+
+If we ever need versioning ergonomics beyond git tags (semver ranges, deprecation, deprecate notices), we move to a registry then. Not yet.
 
 ## Use
 
