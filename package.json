@@ -1,6 +1,6 @@
 {
   "name": "@planara/design-system",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Shared design tokens + components for planara.com properties.",
   "type": "module",
   "license": "UNLICENSED",

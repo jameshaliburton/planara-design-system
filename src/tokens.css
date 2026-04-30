@@ -31,12 +31,14 @@
 }
 
 /* Semantic tokens for dark surfaces — used by the shared Footer.
-   Not in @theme because they're for direct var() use, not Tailwind utilities. */
+   Not in @theme because they're for direct var() use, not Tailwind utilities.
+   Opacities calibrated to clear WCAG AA (4.5:1) on the canonical
+   --color-planara-dark (#131820) background. */
 :root {
   --text-on-dark-primary: #F8FAFC;
-  --text-on-dark-secondary: rgba(255, 255, 255, 0.65);
-  --text-on-dark-muted: rgba(255, 255, 255, 0.45);
-  --text-on-dark-faint: rgba(255, 255, 255, 0.3);
+  --text-on-dark-secondary: rgba(255, 255, 255, 0.72);
+  --text-on-dark-muted: rgba(255, 255, 255, 0.6);
+  --text-on-dark-faint: rgba(255, 255, 255, 0.55);
 
   --border-on-dark: rgba(255, 255, 255, 0.08);
   --border-on-dark-strong: rgba(255, 255, 255, 0.12);
